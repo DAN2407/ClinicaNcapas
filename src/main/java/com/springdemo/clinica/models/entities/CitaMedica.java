@@ -16,6 +16,7 @@ public class CitaMedica {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID code;
+    private String nombre;
     private String fecha;
     private String hora;
     private String motivo;

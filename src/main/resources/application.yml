@@ -17,3 +17,8 @@ spring:
             hibernate:
                 globally_quoted_identifiers: true
         show-sql: true
+
+
+jwt:
+    secret: "94c9b14f-b497-4f25-bc02-4f5e1a512c3d"
+    exptime: 1296000000

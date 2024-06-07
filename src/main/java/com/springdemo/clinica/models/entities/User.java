@@ -58,6 +58,13 @@ public class User implements UserDetails {
         return this.active;
     }
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "permissions",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Role> roles;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "historial_id", nullable = false)

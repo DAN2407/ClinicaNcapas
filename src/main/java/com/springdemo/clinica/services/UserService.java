@@ -1,8 +1,12 @@
 package com.springdemo.clinica.services;
 
 import com.springdemo.clinica.models.dtos.UserRegisterDTO;
+import com.springdemo.clinica.models.entities.Role;
 import com.springdemo.clinica.models.entities.Token;
 import com.springdemo.clinica.models.entities.User;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 public interface UserService {
     User findByIdentifier(String identifier);
@@ -17,5 +21,9 @@ public interface UserService {
     User findUserAuthenticated();
     void updatePassword(String identifier, String newPassword);
 
+    //roles
+    void changeRoles(String username, @NotNull List<String> role);
+    Role getRoleById(String role);
+    List<Role> getRoles();
 
 }

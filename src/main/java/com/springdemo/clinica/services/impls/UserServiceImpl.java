@@ -16,24 +16,5 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    @Override
-    @Transactional(rollbackOn = Exception.class)
-    public void create(UserRegisterDTO info) {
-        User user = new User();
-        user.setUsername(info.getUsername());
-        user.setPassword(info.getPassword());
-        user.setEmail(info.getEmail());
-        userRepository.save(user);
 
-    }
-
-    @Override
-    public User findByUsernameOrEmail(String username, String email) {
-        return userRepository.findByUsernameOrEmail(username, email).orElse(null);
-    }
-
-    @Override
-    public User findByIdentifier(String identifier) {
-        return userRepository.findByUsernameOrEmail(identifier, identifier).orElse(null);
-    }
 }

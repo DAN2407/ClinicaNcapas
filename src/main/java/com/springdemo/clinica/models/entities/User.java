@@ -1,27 +1,27 @@
 package com.springdemo.clinica.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users")
 @Data
+@Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID code;
 
-    @NotBlank
-    private String username;
+    private String nombre_usuario;
+    private String correo;
+    private String contrasena;
 
-    @Email(message = "El correo electrónico debe tener un formato válido")
-    private String email;
 
-    @NotBlank(message = "La contraseña no puede estar vacía")
-    @Column(nullable = false, length = 64)
-    private String password;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "historial_id", nullable = false)
+    private Historial historial;
 }

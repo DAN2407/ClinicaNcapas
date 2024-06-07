@@ -1,29 +1,19 @@
-#spring.application.name=Clinica
-
 spring:
+    sql:
+        init:
+            data:
     application:
-        name: Clinica
+        name: preparcial
     mustache:
         suffix: .html
     datasource:
-        url: jdbc:postgresql://localhost:5432/test_n
+        url: jdbc:postgresql://localhost:5050/db_clinica
         username: postgres
-        password: 12345678Aa!
+        password: capasproyecto
     jpa:
-        show-sql: true
         hibernate:
             ddl-auto: update
         properties:
             hibernate:
-            globally_quoted_identifiers: true
-            jdbc:
-                batch_size: 20
-            transaction:
-                flush_before_completion: true
-    sql:
-        init:
-            mode: always
-
-jwt:
-secret: "94c9b14f-b497-4f25-bc02-4f5e1a512c3d"
-exptime: 1296000000
+                globally_quoted_identifiers: true
+        show-sql: true

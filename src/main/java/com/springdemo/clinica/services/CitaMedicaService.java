@@ -7,7 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CitaMedicaService {
-    void create(CreateCitaMedicaDTO info);
-    void delete(UUID id);
-    List<CitaMedica> findAll();
+
 }

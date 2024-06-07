@@ -15,22 +15,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
-    private final UserService userService;
-
-    public AuthController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<GeneralResponse> register(@RequestBody @Valid UserRegisterDTO info) {
-        User user = userService.findByUsernameOrEmail(info.getUsername(), info.getEmail());
-        if(user != null){
-            return GeneralResponse.getResponse(HttpStatus.CONFLICT, "User already exists");
-        }
-
-        userService.create(info);
-        return GeneralResponse.getResponse(HttpStatus.CREATED, "User registered successfully");
-
-    }
 }

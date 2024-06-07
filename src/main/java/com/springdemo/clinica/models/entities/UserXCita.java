@@ -3,24 +3,23 @@ package com.springdemo.clinica.models.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Entity
-@Table(name = "pre_inscripcion")
 @Data
-public class PreInscripcion {
+@Table(name = "user_x_cita")
+public class UserXCita {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID code;
+    private String code;
 
-    private String nombre;
     private String fecha;
     private String hora;
     private String motivo;
     private String diagnostico;
     private String tratamiento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cita_medica_id", nullable = false)
-    private CitaMedica citaMedica;
+    //llaves foraneas
+
+    private String idUser;
+
+    private String idCita;
 }

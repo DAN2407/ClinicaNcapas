@@ -1,10 +1,12 @@
 package com.springdemo.clinica.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,12 +18,18 @@ public class CitaMedica {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID code;
+
     private String nombre;
     private String fecha;
     private String hora;
     private String motivo;
     private String diagnostico;
     private String tratamiento;
+
+
+    @OneToMany(mappedBy = "citaMedica", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<PreInscripcion> preInscripciones;
 
 
 }

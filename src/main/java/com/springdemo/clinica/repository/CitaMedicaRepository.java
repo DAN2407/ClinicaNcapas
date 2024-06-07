@@ -7,7 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CitaMedicaRepository extends JpaRepository<CitaMedica, String> {
-    Optional<CitaMedica> save(String nombre);
-    Optional<CitaMedica> findById(UUID id);
-    Optional<CitaMedica> deleteById(UUID id);
+
 }

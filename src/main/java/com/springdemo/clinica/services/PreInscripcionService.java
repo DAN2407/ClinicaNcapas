@@ -6,7 +6,5 @@ import com.springdemo.clinica.models.entities.PreInscripcion;
 import java.util.List;
 
 public interface PreInscripcionService {
-    void save(CreatePreinscripcionDTO info);
-    List<PreInscripcion> findAll();
 
 }

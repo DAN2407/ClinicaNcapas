@@ -6,6 +6,5 @@ import com.springdemo.clinica.models.entities.Historial;
 import java.util.List;
 
 public interface HistorialService {
-    void create(CreateHistorialDTO info);
-    List<Historial> findAll();
+
 }

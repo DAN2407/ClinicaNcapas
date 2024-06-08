@@ -27,9 +27,15 @@ public class CitaMedica {
     private String tratamiento;
 
 
-    @OneToMany(mappedBy = "citaMedica", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //LLAVES FORANEAS -> citaMedica es el nombre de la variable en la clase UserXCita
+    @OneToMany(mappedBy = "citaMedica", fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<PreInscripcion> preInscripciones;
+    private List<UserXCita> userXCitas;
+
+    //Llave de usuario
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "code")
+    private User user;
 
 
 }

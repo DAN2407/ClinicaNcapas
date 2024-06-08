@@ -18,8 +18,6 @@ public class AuthController {
         this.userService = userService;
     }
 
-
-
     @PostMapping("/register")
     public ResponseEntity<GeneralResponse> register(@RequestBody @Valid UserRegisterDTO info) {
         User user = userService.findByUsernameOrEmail(info.getUsername(), info.getEmail());

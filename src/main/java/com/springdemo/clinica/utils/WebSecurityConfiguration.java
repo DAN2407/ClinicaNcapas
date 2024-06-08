@@ -6,6 +6,7 @@ import com.springdemo.clinica.services.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,6 +17,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import static com.springdemo.clinica.models.entities.Permission.*;
+import static com.springdemo.clinica.models.entities.Role.*;
 
 @Configuration
 @EnableWebSecurity
@@ -60,8 +64,30 @@ public class WebSecurityConfiguration {
         //Route filter
         http.authorizeHttpRequests(auth ->
                 auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/auth/**")
+                            .permitAll()
+
+                        .requestMatchers("/api/admin/**").hasAnyRole(ADMIN.name())
+                        .requestMatchers(HttpMethod.GET, "/api/admin/**").hasAnyAuthority(ADMIN_READ.name())
+                        .requestMatchers(HttpMethod.POST, "/api/admin/**").hasAnyAuthority(ADMIN_CREATE.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/admin/**").hasAnyAuthority(ADMIN_READ.name())
+                        .requestMatchers(HttpMethod.DELETE, "/api/admin/**").hasAnyAuthority(ADMIN_READ.name())
+
+                        .requestMatchers("/api/management/**").hasAnyRole(ADMIN.name(), MEDIC.name())
+                        .requestMatchers(HttpMethod.GET, "/api/management/**").hasAnyAuthority(ADMIN_READ.name(), MEDIC.name())
+                        .requestMatchers(HttpMethod.POST, "/api/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MEDIC.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/management/**").hasAnyAuthority(ADMIN_READ.name(), MEDIC.name())
+                        .requestMatchers(HttpMethod.DELETE, "/api/management/**").hasAnyAuthority(ADMIN_READ.name(), MEDIC.name())
+
+                        .requestMatchers("/api/user/**").hasAnyRole(USER.name())
+                        .requestMatchers(HttpMethod.GET, "/api/user/**").hasAnyAuthority(USER_READ.name())
+                        .requestMatchers(HttpMethod.POST, "/api/user/**").hasAnyAuthority(USER_CREATE.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/user/**").hasAnyAuthority(USER_READ.name())
+                        .requestMatchers(HttpMethod.DELETE, "/api/user/**").hasAnyAuthority(USER_READ.name())
+                        .anyRequest()
+                            .authenticated()
+
+
         );
 
         //Statelessness

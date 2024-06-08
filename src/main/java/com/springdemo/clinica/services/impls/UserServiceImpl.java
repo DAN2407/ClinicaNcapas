@@ -4,19 +4,16 @@ import com.springdemo.clinica.models.dtos.UserRegisterDTO;
 import com.springdemo.clinica.models.entities.Role;
 import com.springdemo.clinica.models.entities.Token;
 import com.springdemo.clinica.models.entities.User;
-import com.springdemo.clinica.repository.RoleRepository;
 import com.springdemo.clinica.repository.TokenRepository;
 import com.springdemo.clinica.repository.UserRepository;
 import com.springdemo.clinica.services.UserService;
 import com.springdemo.clinica.utils.JWTTools;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,27 +24,24 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final RoleRepository roleRepository;
 
 
 
-    public UserServiceImpl(UserRepository userRepository, JWTTools jwtTools, TokenRepository tokenRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, JWTTools jwtTools, TokenRepository tokenRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.jwtTools = jwtTools;
         this.tokenRepository = tokenRepository;
         this.passwordEncoder = passwordEncoder;
-        this.roleRepository = roleRepository;
     }
 
     @Override
     @Transactional(rollbackOn = Exception.class)
     public void create(UserRegisterDTO info) {
-        //busueda de roles por
         User user = new User();
         user.setUsername(info.getUsername());
         user.setPassword(passwordEncoder.encode(info.getPassword()));
         user.setEmail(info.getEmail());
-        user.setRoles(info.getRole());
+        user.setRole(info.getRole());
         userRepository.save(user);
     }
 
@@ -149,34 +143,8 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Override
-    public void changeRoles(String username, @NotNull List<String> role) {
-        User user = userRepository.findByUsernameOrEmail(username, username).orElse(null);
-        if(user == null) {
-            throw new EntityNotFoundException("User not found with username: " + username);
-        }
 
-        List<Role> roles = new ArrayList<>();
-        role.forEach(r -> {
-            Role role1 = roleRepository.findById(r).orElse(null);
-            if(role1 != null) {
-                roles.add(role1);
-            }
-        });
 
-        user.setRoles(roles);
-        userRepository.save(user);
-    }
-
-    @Override
-    public Role getRoleById(String role) {
-        return roleRepository.findById(role).orElse(null);
-    }
-
-    @Override
-    public List<Role> getRoles() {
-        return roleRepository.findAll();
-    }
 
 
 

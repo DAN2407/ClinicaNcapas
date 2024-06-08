@@ -21,9 +21,5 @@ public interface UserService {
     User findUserAuthenticated();
     void updatePassword(String identifier, String newPassword);
 
-    //roles
-    void changeRoles(String username, @NotNull List<String> role);
-    Role getRoleById(String role);
-    List<Role> getRoles();
 
 }

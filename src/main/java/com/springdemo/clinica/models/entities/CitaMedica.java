@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,12 +20,12 @@ public class CitaMedica {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID code;
 
-    private String nombre;
-    private String fecha;
-    private String hora;
-    private String motivo;
-    private String diagnostico;
-    private String tratamiento;
+    private Date fecha_realizacion;
+    private Date fecha_finalizacion;
+    private Date fecha_solicitud;
+    private String razon;
+    private String estado;
+    private Date fecha_estimada_finalizacion;
 
     //LLAVES FORANEAS -> citaMedica es el nombre de la variable en la clase UserXCita
     @OneToMany(mappedBy = "citaMedica", fetch = FetchType.LAZY)

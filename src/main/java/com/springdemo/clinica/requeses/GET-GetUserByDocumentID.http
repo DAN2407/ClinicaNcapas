@@ -1,0 +1,6 @@
+POST http://localhost:8080/user/find-user
+Content-Type: application/json
+
+{
+  "correo": "ricardomor3409@gmail.com"
+}

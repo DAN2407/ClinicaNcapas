@@ -1,0 +1,7 @@
+POST http://localhost:8080/user/change-roles
+Content-Type: application/json
+
+{
+  "Document_id": "Asistente",
+  "roles": "Asistente"
+}

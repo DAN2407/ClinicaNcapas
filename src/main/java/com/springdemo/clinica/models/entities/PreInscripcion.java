@@ -13,12 +13,10 @@ public class PreInscripcion {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID code;
 
-    private String nombre;
-    private String fecha;
-    private String hora;
-    private String motivo;
-    private String diagnostico;
-    private String tratamiento;
+    private String fecha_final;
+    private String medicamento;
+    private String Dosis;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cita_medica_id", nullable = false)

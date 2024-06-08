@@ -1,0 +1,10 @@
+POST http://localhost:8080/user/add-user
+Content-Type: application/json
+
+{
+  "nombre_usuario": "Emilio Zepeda",
+  "correo": "emiliozpe384@gmail.com",
+  "contrasena": "098343",
+  "telefono": "1984-9733",
+  "documento_de_identidad": "39843844-9"
+}

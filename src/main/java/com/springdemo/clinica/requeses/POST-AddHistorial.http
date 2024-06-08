@@ -1,0 +1,8 @@
+POST http://localhost:8080/historial/add-historial
+Content-Type: application/json
+
+{
+  "fecha": "2021-06-01",
+  "razon": "Dolor de cabeza",
+  "correo": "ricardomor3409@gmail.com"
+}

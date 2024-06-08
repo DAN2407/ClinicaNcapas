@@ -19,11 +19,15 @@ public class User {
     private String nombre_usuario;
     private String correo;
     private String contrasena;
+    private String telefono;
 
-    //Creando la relacion con la tabla historial
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "historial_id", nullable = false)
-    private Historial historial;
+    @Column(name = "documento_de_identidad")
+    private String documentoDeIdentidad;
+
+    // Relación 1:N con Historial
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Historial> historiales;
 
 
     //Creando la relacion con la tabla rol N:N

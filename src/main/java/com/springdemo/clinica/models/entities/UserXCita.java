@@ -3,6 +3,8 @@ package com.springdemo.clinica.models.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Data
 @Table(name = "user_x_cita")
@@ -11,11 +13,12 @@ public class UserXCita {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String code;
 
-    private String fecha;
-    private String hora;
-    private String motivo;
-    private String diagnostico;
-    private String tratamiento;
+    private Date f_realizacion;
+    private Date f_finalizacion;;
+    private Date f_solicitada;
+    private String razon;
+    private boolean estado;
+    private Date f_estimada_final;
 
     //LLAVES FORANEAS
 

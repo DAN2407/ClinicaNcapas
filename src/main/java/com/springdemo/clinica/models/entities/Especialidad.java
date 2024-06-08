@@ -16,7 +16,6 @@ public class Especialidad {
     private UUID code;
 
     private String nombre;
-    private String descripcion;
 
     //Creando la relacion con tabla cruz UserXCita
     @OneToMany(mappedBy = "especialidad",fetch = FetchType.LAZY)

@@ -7,5 +7,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CitaMedicaRepository extends JpaRepository<CitaMedica, String> {
+    void deleteByCode(UUID code);
+
+    Optional<CitaMedica> findByCode(UUID code);
 
 }

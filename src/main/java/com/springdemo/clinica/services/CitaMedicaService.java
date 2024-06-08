@@ -8,4 +8,10 @@ import java.util.UUID;
 
 public interface CitaMedicaService {
 
+    void save(CreateCitaMedicaDTO info);
+    void delete(UUID code);
+    List<CitaMedica> getAll();
+    CitaMedica getByCode(UUID code);
+    void update(UUID code, CreateCitaMedicaDTO info);
+
 }

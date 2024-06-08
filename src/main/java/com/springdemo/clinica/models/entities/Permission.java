@@ -17,7 +17,11 @@ public enum Permission {
     MEDIC_READ("medic:read"),
     MEDIC_CREATE("medic:create"),
     MEDIC_UPDATE("medic:update"),
-    MEDIC_DELETE("medic:delete");
+    MEDIC_DELETE("medic:delete"),
+    ASSISTANT_READ("assistant:read"),
+    ASSISTANT_CREATE("assistant:create"),
+    ASSISTANT_UPDATE("assistant:update"),
+    ASSISTANT_DELETE("assistant:delete");
 
     @Getter
     private final String permission;

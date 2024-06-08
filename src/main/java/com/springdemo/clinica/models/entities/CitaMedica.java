@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,12 +20,12 @@ public class CitaMedica {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID code;
 
-    private String nombre;
-    private String fecha;
-    private String hora;
-    private String motivo;
-    private String diagnostico;
-    private String tratamiento;
+    private Date f_realizacion;
+    private Date f_finalizacion;;
+    private Date f_solicitada;
+    private String razon;
+    private String estado;
+    private Date f_estimada_final;
 
 
     //LLAVES FORANEAS -> citaMedica es el nombre de la variable en la clase UserXCita

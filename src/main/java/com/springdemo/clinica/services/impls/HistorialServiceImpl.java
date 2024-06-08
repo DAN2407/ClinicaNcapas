@@ -35,11 +35,7 @@ public class HistorialServiceImpl implements HistorialService {
     public void save(CreateHistorialDTO info) {
         Historial historial = new Historial();
         historial.setFecha(info.getFecha());
-        historial.setHora(info.getHora());
-        historial.setMotivo(info.getMotivo());
-        historial.setDiagnostico(info.getDiagnostico());
-        historial.setTratamiento(info.getTratamiento());
-
+        historial.setRazon(info.getRazon());
         historialRepository.save(historial);
     }
 

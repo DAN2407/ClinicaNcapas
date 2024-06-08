@@ -12,7 +12,8 @@ import java.util.Set;
 public enum Role {
     ADMIN(Set.of(Permission.ADMIN_READ, Permission.ADMIN_CREATE, Permission.ADMIN_UPDATE, Permission.ADMIN_DELETE)),
     USER(Set.of(Permission.USER_READ, Permission.USER_CREATE, Permission.USER_UPDATE, Permission.USER_DELETE)),
-    MEDIC(Set.of(Permission.MEDIC_READ, Permission.MEDIC_CREATE, Permission.MEDIC_UPDATE, Permission.MEDIC_DELETE));
+    MEDIC(Set.of(Permission.MEDIC_READ, Permission.MEDIC_CREATE, Permission.MEDIC_UPDATE, Permission.MEDIC_DELETE)),
+    ASSISTANT(Set.of(Permission.ASSISTANT_READ, Permission.ASSISTANT_CREATE, Permission.ASSISTANT_UPDATE, Permission.ASSISTANT_DELETE));
 
     ;
     @Getter

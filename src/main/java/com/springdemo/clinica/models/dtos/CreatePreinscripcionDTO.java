@@ -2,12 +2,11 @@ package com.springdemo.clinica.models.dtos;
 
 import lombok.Data;
 
+import java.sql.Date;
+
 @Data
 public class CreatePreinscripcionDTO {
-    private String nombre;
-    private String fecha;
-    private String hora;
-    private String motivo;
-    private String diagnostico;
-    private String tratamiento;
+    private Date fecha_final;
+    private String medicamento;
+    private String dosis;
 }

@@ -2,12 +2,14 @@ package com.springdemo.clinica.models.dtos;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class CreateCitaMedicaDTO {
-    private String nombre;
-    private String fecha;
-    private String hora;
-    private String motivo;
-    private String diagnostico;
-    private String tratamiento;
+    private Date f_realizacion;
+    private Date f_finalizacion;;
+    private Date f_solicitada;
+    private String razon;
+    private String estado;
+    private Date f_estimada_final;
 }

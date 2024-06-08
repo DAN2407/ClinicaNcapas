@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,11 +17,8 @@ public class Historial {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID code;
 
-    private String fecha;
-    private String hora;
-    private String motivo;
-    private String diagnostico;
-    private String tratamiento;
+    private Date fecha;
+    private String razon;
 
 
     //Relación uno a muchos con la tabla Historial, un usuario puede tener varios historiales
